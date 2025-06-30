@@ -3,6 +3,8 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
+import { YouTubePlayer } from './YouTubePlayer'
+import { extractYouTubeVideoId } from '@/utils/youtube'
 
 interface User {
   id: string
@@ -183,16 +185,26 @@ export default function FeedComponent({ showAuthPrompt = true }: FeedComponentPr
                   <p className="text-text-secondary mb-4">{post.description}</p>
                 )}
                 
-                {post.link_url && (
-                  <a 
-                    href={post.link_url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-primary hover:underline text-sm"
-                  >
-                    {post.link_url}
-                  </a>
-                )}
+                {post.link_url && (() => {
+                  const videoId = extractYouTubeVideoId(post.link_url)
+                  if (videoId) {
+                    return (
+                      <div className="mb-4">
+                        <YouTubePlayer videoId={videoId} title={post.title} />
+                      </div>
+                    )
+                  }
+                  return (
+                    <a 
+                      href={post.link_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-primary hover:underline text-sm"
+                    >
+                      {post.link_url}
+                    </a>
+                  )
+                })()}
               </article>
             ))}
           </div>
