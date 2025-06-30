@@ -15,7 +15,7 @@ interface TelegramLoginProps {
 }
 
 export default function TelegramLogin({ 
-  botUsername = 'learn_notification_bot',
+  botUsername = 'learn2_notifications_bot',
   onAuth 
 }: TelegramLoginProps) {
   const ref = useRef<HTMLDivElement>(null)
