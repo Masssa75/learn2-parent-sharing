@@ -44,8 +44,9 @@ export default function TelegramLogin({
           // Force a hard redirect to ensure cookies are sent
           window.location.href = '/'
         } else {
-          console.error('Authentication failed:', data.error)
-          alert(`Authentication failed: ${data.error || 'Unknown error'}`)
+          console.error('Authentication failed:', data)
+          const errorMsg = data.details || data.error || 'Unknown error'
+          alert(`Authentication failed: ${errorMsg}`)
         }
       } catch (error) {
         console.error('Authentication error:', error)

@@ -51,12 +51,14 @@ export async function POST(request: NextRequest) {
 
     const supabase = createServerSupabaseClient()
 
+    console.log('Checking for existing user with telegram_id:', authData.id)
+
     // Check if user exists
     const { data: existingUser, error: selectError } = await supabase
       .from('users')
       .select('*')
       .eq('telegram_id', authData.id)
-      .single()
+      .maybeSingle() // Use maybeSingle instead of single to avoid error when no rows
 
     let userId: string
 
@@ -80,6 +82,15 @@ export async function POST(request: NextRequest) {
       userId = existingUser.id
     } else {
       // Create new user
+      console.log('Creating new user with data:', {
+        telegram_id: authData.id,
+        first_name: authData.first_name,
+        last_name: authData.last_name || null,
+        telegram_username: authData.username || null,
+        photo_url: authData.photo_url || null,
+        role: 'user',
+      })
+      
       const { data: newUser, error: insertError } = await supabase
         .from('users')
         .insert({
@@ -96,7 +107,12 @@ export async function POST(request: NextRequest) {
       if (insertError || !newUser) {
         console.error('Error creating user:', insertError)
         return NextResponse.json(
-          { error: 'Failed to create user' },
+          { 
+            error: 'Failed to create user',
+            details: insertError?.message || 'Unknown error',
+            hint: insertError?.hint,
+            code: insertError?.code
+          },
           { status: 500 }
         )
       }

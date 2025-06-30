@@ -16,7 +16,16 @@ export const createServerSupabaseClient = () => {
   return createClient(supabaseUrl, supabaseServiceRoleKey, {
     auth: {
       autoRefreshToken: false,
-      persistSession: false
+      persistSession: false,
+      detectSessionInUrl: false
+    },
+    db: {
+      schema: 'public'
+    },
+    global: {
+      headers: {
+        'x-my-custom-header': 'learn2-server'
+      }
     }
   })
 }
