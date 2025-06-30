@@ -54,3 +54,5 @@ next-env.d.ts
 
 # Coordination file (local only)
 WORKING.md
+# Local Netlify folder
+.netlify
