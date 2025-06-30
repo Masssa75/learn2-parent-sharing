@@ -37,16 +37,19 @@ export default function TelegramLogin({
         const data = await response.json()
         
         if (response.ok) {
+          console.log('Authentication successful:', data)
           if (onAuth) {
             onAuth(user)
           }
-          // Redirect to home page
-          router.push('/')
+          // Force a hard redirect to ensure cookies are sent
+          window.location.href = '/'
         } else {
           console.error('Authentication failed:', data.error)
+          alert(`Authentication failed: ${data.error || 'Unknown error'}`)
         }
       } catch (error) {
         console.error('Authentication error:', error)
+        alert(`Network error: ${error instanceof Error ? error.message : 'Unknown error'}`)
       }
     }
     
