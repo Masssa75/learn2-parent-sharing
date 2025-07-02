@@ -57,7 +57,7 @@ export async function POST(request: NextRequest) {
     }
 
     const body = await request.json()
-    const { title, description, link_url, category, age_range } = body
+    const { title, description, link_url, category, age_range, image_url } = body
 
     if (!title || !category) {
       return NextResponse.json(
@@ -85,6 +85,7 @@ export async function POST(request: NextRequest) {
         link_url,
         category,
         age_range,
+        image_url,
         user_id: session.userId,
       })
       .select()
