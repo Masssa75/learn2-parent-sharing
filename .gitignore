@@ -45,6 +45,12 @@ next-env.d.ts
 
 # Testing files (all test scripts and screenshots)
 /_testing/
+test-results/
+playwright-report/
+*.png
+*.jpg
+*.jpeg
+screenshots/
 
 # Temporary files
 *.tmp
