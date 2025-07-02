@@ -11,8 +11,9 @@ const supabase = createClient(supabaseUrl, supabaseServiceKey)
 
 export async function PATCH(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
+  const { id } = await params
   try {
     // Check if user is authenticated
     const cookieStore = await cookies()
@@ -32,7 +33,7 @@ export async function PATCH(
     const { data: post, error: fetchError } = await supabase
       .from('posts')
       .select('user_id')
-      .eq('id', params.id)
+      .eq('id', id)
       .single()
     
     if (fetchError || !post) {
@@ -64,7 +65,7 @@ export async function PATCH(
         image_url: imageUrl || null,
         updated_at: new Date().toISOString()
       })
-      .eq('id', params.id)
+      .eq('id', id)
       .select()
       .single()
     
@@ -82,8 +83,9 @@ export async function PATCH(
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
+  const { id } = await params
   try {
     // Check if user is authenticated
     const cookieStore = await cookies()
@@ -103,7 +105,7 @@ export async function DELETE(
     const { data: post, error: fetchError } = await supabase
       .from('posts')
       .select('user_id')
-      .eq('id', params.id)
+      .eq('id', id)
       .single()
     
     if (fetchError || !post) {
@@ -125,7 +127,7 @@ export async function DELETE(
     const { error: deleteError } = await supabase
       .from('posts')
       .delete()
-      .eq('id', params.id)
+      .eq('id', id)
     
     if (deleteError) {
       console.error('Error deleting post:', deleteError)
