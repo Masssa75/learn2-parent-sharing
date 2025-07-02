@@ -82,10 +82,8 @@ export default function FeedComponent({ showAuthPrompt = true, protectedRoute = 
     }
     
     // First check auth, then fetch posts
-    console.log('useEffect: Starting initial auth check')
     checkAuth().then(() => {
       if (mounted) {
-        console.log('useEffect: Auth check complete, fetching posts')
         fetchPosts()
       }
     })
@@ -136,7 +134,6 @@ export default function FeedComponent({ showAuthPrompt = true, protectedRoute = 
 
   const checkAuth = async () => {
     try {
-      console.log('checkAuth: Starting authentication check...')
       const response = await fetch('/api/auth/check', {
         credentials: 'include'
       })
@@ -144,11 +141,9 @@ export default function FeedComponent({ showAuthPrompt = true, protectedRoute = 
         throw new Error(`Auth check failed: ${response.status}`)
       }
       const data = await response.json()
-      console.log('checkAuth: Response data:', data)
       setIsAuthenticated(data.authenticated === true)
-      console.log('checkAuth: Setting isAuthenticated to:', data.authenticated === true)
       if (data.authenticated && data.user) {
-        const userData = {
+        setUser({
           id: data.user.id,
           telegramId: data.user.telegram_id,
           username: data.user.telegram_username,
@@ -161,11 +156,8 @@ export default function FeedComponent({ showAuthPrompt = true, protectedRoute = 
           totalXp: data.user.total_xp || 0,
           level: data.user.level || 1,
           actionsRemaining: data.user.actions_remaining
-        }
-        console.log('checkAuth: Setting user data:', userData)
-        setUser(userData)
+        })
       } else {
-        console.log('checkAuth: No authenticated user, setting user to null')
         setUser(null)
       }
       
@@ -180,7 +172,6 @@ export default function FeedComponent({ showAuthPrompt = true, protectedRoute = 
         router.push('/')
       }
     } finally {
-      console.log('checkAuth: Finished. Loading set to false')
       setLoading(false)
     }
   }

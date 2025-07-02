@@ -4,12 +4,9 @@ import { createServerSupabaseClient } from '@/lib/supabase'
 
 export async function GET(request: NextRequest) {
   try {
-    console.log('[Auth Check] Starting auth check...')
     const session = await getSession()
-    console.log('[Auth Check] Session:', session)
     
     if (!session) {
-      console.log('[Auth Check] No session found')
       return NextResponse.json({ authenticated: false })
     }
 
@@ -33,7 +30,6 @@ export async function GET(request: NextRequest) {
       .single()
 
     if (error || !user) {
-      console.log('[Auth Check] User lookup failed:', error)
       return NextResponse.json({ authenticated: false })
     }
 
@@ -55,7 +51,7 @@ export async function GET(request: NextRequest) {
       }
     })
   } catch (error) {
-    console.error('[Auth Check] Error:', error)
+    console.error('Auth check error:', error)
     return NextResponse.json({ authenticated: false })
   }
 }
