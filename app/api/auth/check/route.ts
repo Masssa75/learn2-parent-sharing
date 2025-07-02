@@ -19,6 +19,9 @@ export async function GET(request: NextRequest) {
         *,
         profiles (
           points,
+          total_xp,
+          level,
+          actions_remaining,
           created_at,
           updated_at
         )
@@ -40,7 +43,11 @@ export async function GET(request: NextRequest) {
         last_name: user.last_name,
         photo_url: user.photo_url,
         role: user.role,
+        is_admin: user.is_admin || false,
         points: user.profiles?.[0]?.points || 0,
+        total_xp: user.profiles?.[0]?.total_xp || 0,
+        level: user.profiles?.[0]?.level || 1,
+        actions_remaining: user.profiles?.[0]?.actions_remaining
       }
     })
   } catch (error) {

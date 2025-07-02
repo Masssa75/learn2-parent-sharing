@@ -134,7 +134,7 @@ export default function FeedComponent({ showAuthPrompt = true, protectedRoute = 
 
   const checkAuth = async () => {
     try {
-      const response = await fetch('/api/auth/check-with-points', {
+      const response = await fetch('/api/auth/check', {
         credentials: 'include'
       })
       if (!response.ok) {
@@ -143,7 +143,20 @@ export default function FeedComponent({ showAuthPrompt = true, protectedRoute = 
       const data = await response.json()
       setIsAuthenticated(data.authenticated === true)
       if (data.authenticated && data.user) {
-        setUser(data.user)
+        setUser({
+          id: data.user.id,
+          telegramId: data.user.telegram_id,
+          username: data.user.telegram_username,
+          firstName: data.user.first_name,
+          lastName: data.user.last_name,
+          photoUrl: data.user.photo_url,
+          displayName: data.user.first_name || data.user.telegram_username || 'User',
+          isAdmin: data.user.role === 'admin',
+          points: data.user.points || 0,
+          totalXp: data.user.total_xp || 0,
+          level: data.user.level || 1,
+          actionsRemaining: data.user.actions_remaining
+        })
       } else {
         setUser(null)
       }
@@ -607,12 +620,21 @@ export default function FeedComponent({ showAuthPrompt = true, protectedRoute = 
               </Link>
             </div>
           ) : (
-            <div className="relative">
-              <button 
-                onClick={() => setShowProfileMenu(!showProfileMenu)}
-                className="w-12 h-12 bg-brand-yellow rounded-avatar flex items-center justify-center overflow-hidden relative group"
-                title={user?.displayName || 'Profile'}
-              >
+            <div className="flex items-center gap-4">
+              {user && (
+                <PointsDisplay 
+                  points={user.points || 0}
+                  xp={user.totalXp || 0}
+                  level={user.level || 1}
+                  actionsRemaining={user.actionsRemaining}
+                />
+              )}
+              <div className="relative">
+                <button 
+                  onClick={() => setShowProfileMenu(!showProfileMenu)}
+                  className="w-12 h-12 bg-brand-yellow rounded-avatar flex items-center justify-center overflow-hidden relative group"
+                  title={user?.displayName || 'Profile'}
+                >
                 {user?.photoUrl && (
                   <img 
                     src={user.photoUrl} 
@@ -662,6 +684,7 @@ export default function FeedComponent({ showAuthPrompt = true, protectedRoute = 
                   </button>
                 </div>
               )}
+            </div>
             </div>
           )}
         </div>
