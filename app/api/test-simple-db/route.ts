@@ -26,11 +26,13 @@ export async function GET(request: NextRequest) {
     
     if (error) {
       console.error('Database error:', error)
+      console.error('Error details:', JSON.stringify(error, null, 2))
       return NextResponse.json({ 
         error: 'Database query failed',
-        details: error.message,
-        hint: error.hint,
-        code: error.code
+        details: error.message || 'No error message',
+        hint: error.hint || 'No hint',
+        code: error.code || 'No code',
+        fullError: JSON.stringify(error)
       }, { status: 500 })
     }
     
