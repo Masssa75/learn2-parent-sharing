@@ -4,7 +4,8 @@ import { createServerSupabaseClient } from '@/lib/supabase'
 
 export async function GET(request: NextRequest) {
   try {
-    const session = await getSession()
+    // Pass request to getSession for Edge runtime compatibility
+    const session = await getSession(request)
     
     if (!session) {
       return NextResponse.json({ authenticated: false })

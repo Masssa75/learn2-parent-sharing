@@ -1,12 +1,20 @@
 import { cookies } from 'next/headers'
+import { NextRequest } from 'next/server'
 
 export interface SessionData {
   userId: string
 }
 
-export async function getSession(): Promise<SessionData | null> {
-  const cookieStore = await cookies()
-  const sessionCookie = cookieStore.get('session')
+export async function getSession(request?: NextRequest): Promise<SessionData | null> {
+  // Try to get cookie from request first (for Edge runtime compatibility)
+  let sessionCookie
+  
+  if (request) {
+    sessionCookie = request.cookies.get('session')
+  } else {
+    const cookieStore = await cookies()
+    sessionCookie = cookieStore.get('session')
+  }
   
   if (!sessionCookie) {
     return null
