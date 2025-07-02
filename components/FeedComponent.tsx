@@ -134,7 +134,7 @@ export default function FeedComponent({ showAuthPrompt = true, protectedRoute = 
 
   const checkAuth = async () => {
     try {
-      const response = await fetch('/api/auth/check', {
+      const response = await fetch('/api/auth/check-with-points', {
         credentials: 'include'
       })
       if (!response.ok) {
@@ -143,20 +143,7 @@ export default function FeedComponent({ showAuthPrompt = true, protectedRoute = 
       const data = await response.json()
       setIsAuthenticated(data.authenticated === true)
       if (data.authenticated && data.user) {
-        setUser({
-          id: data.user.id,
-          telegramId: data.user.telegram_id,
-          username: data.user.telegram_username,
-          firstName: data.user.first_name,
-          lastName: data.user.last_name,
-          photoUrl: data.user.photo_url,
-          displayName: data.user.first_name || data.user.telegram_username || 'User',
-          isAdmin: data.user.role === 'admin',
-          points: data.user.points || 0,
-          totalXp: data.user.total_xp || 0,
-          level: data.user.level || 1,
-          actionsRemaining: data.user.actions_remaining
-        })
+        setUser(data.user)
       } else {
         setUser(null)
       }
