@@ -134,6 +134,7 @@ export default function FeedComponent({ showAuthPrompt = true, protectedRoute = 
 
   const checkAuth = async () => {
     try {
+      console.log('checkAuth: Starting authentication check...')
       const response = await fetch('/api/auth/check', {
         credentials: 'include'
       })
@@ -141,9 +142,11 @@ export default function FeedComponent({ showAuthPrompt = true, protectedRoute = 
         throw new Error(`Auth check failed: ${response.status}`)
       }
       const data = await response.json()
+      console.log('checkAuth: Response data:', data)
       setIsAuthenticated(data.authenticated === true)
+      console.log('checkAuth: Setting isAuthenticated to:', data.authenticated === true)
       if (data.authenticated && data.user) {
-        setUser({
+        const userData = {
           id: data.user.id,
           telegramId: data.user.telegram_id,
           username: data.user.telegram_username,
@@ -156,8 +159,11 @@ export default function FeedComponent({ showAuthPrompt = true, protectedRoute = 
           totalXp: data.user.total_xp || 0,
           level: data.user.level || 1,
           actionsRemaining: data.user.actions_remaining
-        })
+        }
+        console.log('checkAuth: Setting user data:', userData)
+        setUser(userData)
       } else {
+        console.log('checkAuth: No authenticated user, setting user to null')
         setUser(null)
       }
       
@@ -171,6 +177,9 @@ export default function FeedComponent({ showAuthPrompt = true, protectedRoute = 
       if (protectedRoute) {
         router.push('/')
       }
+    } finally {
+      console.log('checkAuth: Finished. Loading set to false')
+      setLoading(false)
     }
   }
 
@@ -604,7 +613,9 @@ export default function FeedComponent({ showAuthPrompt = true, protectedRoute = 
         <div className="max-w-2xl mx-auto px-5 pt-6 pb-4">
           <div className="flex items-center justify-between mb-2">
           <h1 className="text-display text-text-primary">Discover</h1>
-          {!isAuthenticated ? (
+          {loading ? (
+            <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-brand-yellow"></div>
+          ) : !isAuthenticated ? (
             <div className="flex items-center gap-3">
               <button
                 onClick={() => router.push('/login')}
