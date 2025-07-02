@@ -82,8 +82,10 @@ export default function FeedComponent({ showAuthPrompt = true, protectedRoute = 
     }
     
     // First check auth, then fetch posts
+    console.log('useEffect: Starting initial auth check')
     checkAuth().then(() => {
       if (mounted) {
+        console.log('useEffect: Auth check complete, fetching posts')
         fetchPosts()
       }
     })
