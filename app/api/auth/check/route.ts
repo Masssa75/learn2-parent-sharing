@@ -7,8 +7,12 @@ export async function GET(request: NextRequest) {
     // Pass request to getSession for Edge runtime compatibility
     const session = await getSession(request)
     
+    // Debug logging
+    console.log('[Auth Check] Session:', session)
+    
     if (!session) {
-      return NextResponse.json({ authenticated: false })
+      console.log('[Auth Check] No session found')
+      return NextResponse.json({ authenticated: false, debug: 'no_session' })
     }
 
     const supabase = createServerSupabaseClient()
@@ -31,7 +35,8 @@ export async function GET(request: NextRequest) {
       .single()
 
     if (error || !user) {
-      return NextResponse.json({ authenticated: false })
+      console.log('[Auth Check] Database error:', error)
+      return NextResponse.json({ authenticated: false, debug: 'db_error', error: error?.message })
     }
 
     return NextResponse.json({
