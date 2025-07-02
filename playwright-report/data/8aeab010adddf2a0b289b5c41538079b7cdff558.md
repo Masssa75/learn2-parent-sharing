@@ -1,7 +1,6 @@
 # Page snapshot
 
 ```yaml
-- alert
 - heading "Discover" [level=1]
 - button "CLAIM +100"
 - link "SIGN IN":
@@ -79,4 +78,5 @@
   - text: Share
 - button:
   - img
+- alert
 ```

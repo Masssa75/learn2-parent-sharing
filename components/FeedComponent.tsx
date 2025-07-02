@@ -592,97 +592,85 @@ export default function FeedComponent({ showAuthPrompt = true, protectedRoute = 
       <div className="sticky top-0 bg-dark-bg z-10">
         <div className="max-w-2xl mx-auto px-5 pt-6 pb-4">
           <div className="flex items-center justify-between mb-2">
-          <h1 className="text-display text-text-primary">Discover</h1>
-          {loading ? (
-            <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-brand-yellow"></div>
-          ) : !isAuthenticated ? (
-            <div className="flex items-center gap-3">
-              <button
-                onClick={() => router.push('/login')}
-                className="bg-brand-yellow/20 border border-brand-yellow text-brand-yellow rounded-button px-4 py-2 text-sm font-semibold uppercase tracking-wider hover:bg-brand-yellow/30 transition-all cursor-pointer"
-              >
-                CLAIM +100
-              </button>
-              <Link 
-                href="/login"
-                className="px-6 py-3 bg-brand-yellow text-black rounded-button font-semibold hover:scale-105 btn-transition"
-              >
-                SIGN IN
-              </Link>
-            </div>
-          ) : (
-            <div className="flex items-center gap-4">
-              {user && (
-                <PointsDisplay 
-                  points={user.points || 0}
-                  xp={user.totalXp || 0}
-                  level={user.level || 1}
-                  actionsRemaining={user.actionsRemaining}
-                />
-              )}
+            <h1 className="text-display text-text-primary">Discover</h1>
+            {!isAuthenticated ? (
+              <div className="flex items-center gap-3">
+                <button
+                  onClick={() => router.push('/login')}
+                  className="bg-brand-yellow/20 border border-brand-yellow text-brand-yellow rounded-button px-4 py-2 text-sm font-semibold uppercase tracking-wider hover:bg-brand-yellow/30 transition-all cursor-pointer"
+                >
+                  CLAIM +100
+                </button>
+                <Link 
+                  href="/login"
+                  className="px-6 py-3 bg-brand-yellow text-black rounded-button font-semibold hover:scale-105 btn-transition"
+                >
+                  SIGN IN
+                </Link>
+              </div>
+            ) : (
               <div className="relative">
                 <button 
                   onClick={() => setShowProfileMenu(!showProfileMenu)}
                   className="w-12 h-12 bg-brand-yellow rounded-avatar flex items-center justify-center overflow-hidden relative group"
                   title={user?.displayName || 'Profile'}
                 >
-                {user?.photoUrl && (
-                  <img 
-                    src={user.photoUrl} 
-                    alt={user.displayName}
-                    className="w-full h-full object-cover absolute inset-0"
-                    onError={(e) => {
-                      const img = e.currentTarget as HTMLImageElement
-                      img.style.display = 'none'
-                    }}
-                    onLoad={(e) => {
-                      const img = e.currentTarget as HTMLImageElement
-                      // Hide image if it didn't load properly
-                      if (img.naturalWidth === 0 || img.naturalHeight === 0) {
+                  {user?.photoUrl && (
+                    <img 
+                      src={user.photoUrl} 
+                      alt={user.displayName}
+                      className="w-full h-full object-cover absolute inset-0"
+                      onError={(e) => {
+                        const img = e.currentTarget as HTMLImageElement
                         img.style.display = 'none'
-                      }
-                    }}
-                  />
-                )}
-                <span 
-                  className={`${user?.firstName ? 'text-black font-semibold text-2xl' : 'text-xl'} flex items-center justify-center w-full h-full`}
-                >
-                  {user?.firstName ? user.firstName.charAt(0).toUpperCase() : (user ? 'U' : '👤')}
-                </span>
-              </button>
-              
-              {showProfileMenu && (
-                <div className="absolute right-0 mt-2 w-48 bg-dark-surface rounded-card shadow-lg py-2 border border-dark-border">
-                  <Link
-                    href="/profile"
-                    className="block w-full text-left px-4 py-2 text-text-primary hover:bg-white/5"
+                      }}
+                      onLoad={(e) => {
+                        const img = e.currentTarget as HTMLImageElement
+                        // Hide image if it didn't load properly
+                        if (img.naturalWidth === 0 || img.naturalHeight === 0) {
+                          img.style.display = 'none'
+                        }
+                      }}
+                    />
+                  )}
+                  <span 
+                    className={`${user?.firstName ? 'text-black font-semibold text-2xl' : 'text-xl'} flex items-center justify-center w-full h-full`}
                   >
-                    View Profile
-                  </Link>
-                  {user?.isAdmin && (
+                    {user?.firstName ? user.firstName.charAt(0).toUpperCase() : (user ? 'U' : '👤')}
+                  </span>
+                </button>
+                
+                {showProfileMenu && (
+                  <div className="absolute right-0 mt-2 w-48 bg-dark-surface rounded-card shadow-lg py-2 border border-dark-border">
                     <Link
-                      href="/admin"
+                      href="/profile"
                       className="block w-full text-left px-4 py-2 text-text-primary hover:bg-white/5"
                     >
-                      Admin Dashboard
+                      View Profile
                     </Link>
-                  )}
-                  <button
-                    onClick={handleSignOut}
-                    className="w-full text-left px-4 py-2 text-text-primary hover:bg-white/5"
-                  >
-                    Sign Out
-                  </button>
-                </div>
-              )}
-            </div>
-            </div>
-          )}
-        </div>
-        <p className="text-text-secondary text-body-lg mb-6">What's working for parents today</p>
-        
-        {/* Categories */}
-        <div className="flex gap-3 overflow-x-auto scrollbar-hide pb-2">
+                    {user?.isAdmin && (
+                      <Link
+                        href="/admin"
+                        className="block w-full text-left px-4 py-2 text-text-primary hover:bg-white/5"
+                      >
+                        Admin Dashboard
+                      </Link>
+                    )}
+                    <button
+                      onClick={handleSignOut}
+                      className="w-full text-left px-4 py-2 text-text-primary hover:bg-white/5"
+                    >
+                      Sign Out
+                    </button>
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+          <p className="text-text-secondary text-body-lg mb-6">What's working for parents today</p>
+          
+          {/* Categories */}
+          <div className="flex gap-3 overflow-x-auto scrollbar-hide pb-2">
           {categories.map((category) => (
             <button
               key={category}
