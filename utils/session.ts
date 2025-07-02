@@ -11,11 +11,9 @@ export async function getSession(request?: NextRequest): Promise<SessionData | n
   
   if (request) {
     sessionCookie = request.cookies.get('session')
-    console.log('[getSession] Got cookie from request:', !!sessionCookie)
   } else {
     const cookieStore = await cookies()
     sessionCookie = cookieStore.get('session')
-    console.log('[getSession] Got cookie from cookies():', !!sessionCookie)
   }
   
   if (!sessionCookie) {
@@ -23,14 +21,14 @@ export async function getSession(request?: NextRequest): Promise<SessionData | n
   }
   
   try {
-    console.log('[getSession] Cookie value:', sessionCookie.value.substring(0, 20) + '...')
-    const decoded = Buffer.from(sessionCookie.value, 'base64').toString()
-    console.log('[getSession] Decoded:', decoded)
-    const sessionData = JSON.parse(decoded)
-    console.log('[getSession] Parsed session data:', sessionData)
+    // URL decode the cookie value first (in case it's URL encoded)
+    const decodedCookieValue = decodeURIComponent(sessionCookie.value)
+    const sessionData = JSON.parse(
+      Buffer.from(decodedCookieValue, 'base64').toString()
+    )
     return sessionData
   } catch (error) {
-    console.error('[getSession] Failed to parse session:', error)
+    console.error('Failed to parse session:', error)
     return null
   }
 }
