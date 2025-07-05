@@ -4,12 +4,6 @@ const nextConfig = {
   images: {
     domains: ['t.me', 'img.youtube.com', 'i.ytimg.com'],
   },
-  // Supabase requires this for real-time features
-  experimental: {
-    serverActions: {
-      allowedOrigins: ['localhost:3000']
-    }
-  }
 }
 
 module.exports = nextConfig
