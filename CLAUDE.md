@@ -17,8 +17,10 @@ If a file is taken, either:
 1. Make code changes
 2. git add -A && git commit -m "feat: description" && git push origin main
 3. sleep 120  # MUST wait 2 minutes for Netlify deployment
-4. Check deployment: https://app.netlify.com/sites/[site-name]/deploys
-5. npx playwright test --headed  # Test on DEPLOYED site
+4. ALWAYS check deployment status BEFORE testing:
+   curl -s -H "Authorization: Bearer ${NETLIFY_AUTH_TOKEN}" "https://api.netlify.com/api/v1/sites/learn2-parent-sharing.netlify.app/deploys?per_page=1" | jq '.[0].state'
+   # Must show "ready" - if "error" check build logs
+5. npx playwright test --headed  # Test on DEPLOYED site ONLY after deployment succeeds
 6. If broken, fix and repeat from step 1
 ```
 
