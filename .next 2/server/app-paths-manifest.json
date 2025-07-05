@@ -1,0 +1,17 @@
+{
+  "/api/ai/generate-titles/route": "app/api/ai/generate-titles/route.js",
+  "/api/admin/check/route": "app/api/admin/check/route.js",
+  "/api/auth/check/route": "app/api/auth/check/route.js",
+  "/api/auth/dev-login/route": "app/api/auth/dev-login/route.js",
+  "/api/auth/logout/route": "app/api/auth/logout/route.js",
+  "/api/posts/[id]/route": "app/api/posts/[id]/route.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/api/debug-auth/route": "app/api/debug-auth/route.js",
+  "/api/auth/telegram/route": "app/api/auth/telegram/route.js",
+  "/api/posts/route": "app/api/posts/route.js",
+  "/create/page": "app/create/page.js",
+  "/page": "app/page.js",
+  "/login/page": "app/login/page.js",
+  "/test-auth/page": "app/test-auth/page.js",
+  "/debug-auth/page": "app/debug-auth/page.js"
+}
