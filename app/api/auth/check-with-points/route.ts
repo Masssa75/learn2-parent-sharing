@@ -7,7 +7,10 @@ export async function GET(request: NextRequest) {
     // Pass request to getSession for Edge runtime compatibility
     const session = await getSession(request)
     
+    console.log('[AUTH CHECK] Session:', session)
+    
     if (!session) {
+      console.log('[AUTH CHECK] No session found')
       return NextResponse.json({ authenticated: false })
     }
 
@@ -30,7 +33,10 @@ export async function GET(request: NextRequest) {
       .eq('id', session.userId)
       .single()
 
+    console.log('[AUTH CHECK] User query result:', { user, error })
+
     if (error || !user) {
+      console.log('[AUTH CHECK] User not found or error:', error)
       return NextResponse.json({ authenticated: false })
     }
 
