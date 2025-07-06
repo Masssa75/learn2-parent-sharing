@@ -12,6 +12,13 @@ module.exports = {
         background: '#000000',
         surface: '#111111',
         border: 'rgba(255, 255, 255, 0.1)',
+        'brand-yellow': '#F5D547',
+        'dark-bg': '#000000',
+        'dark-surface': '#111111',
+        'dark-border': 'rgba(255, 255, 255, 0.1)',
+        'text-primary': '#FFFFFF',
+        'text-secondary': 'rgba(255, 255, 255, 0.7)',
+        'text-muted': 'rgba(255, 255, 255, 0.5)',
       },
       fontSize: {
         'display': '48px',
@@ -22,6 +29,7 @@ module.exports = {
         'button': '25px',
         'card': '16px',
         'input': '12px',
+        'avatar': '50%',
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',

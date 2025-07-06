@@ -22,7 +22,6 @@ export async function GET(request: NextRequest) {
           points,
           total_xp,
           level,
-          actions_remaining,
           created_at,
           updated_at
         )
@@ -50,7 +49,7 @@ export async function GET(request: NextRequest) {
         points: user.profiles?.[0]?.points || 0,
         totalXp: user.profiles?.[0]?.total_xp || 0,
         level: user.profiles?.[0]?.level || 1,
-        actionsRemaining: user.profiles?.[0]?.actions_remaining
+        actionsRemaining: 10 // Default value since column doesn't exist
       }
     })
   } catch (error) {

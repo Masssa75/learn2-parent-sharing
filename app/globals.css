@@ -67,4 +67,25 @@
   .animate-in {
     animation: fadeIn 0.5s ease-in-out;
   }
+  
+  .btn-transition {
+    @apply transition-all duration-200 ease-in-out transform;
+  }
+  
+  .text-body {
+    @apply text-base;
+  }
+  
+  .text-body-lg {
+    @apply text-lg;
+  }
+  
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
 }
