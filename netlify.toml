@@ -1,5 +1,10 @@
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
+[build]
+  command = "npm run build"
+  publish = ".next"
+
 [build.environment]
   NODE_VERSION = "18"
+  NPM_FLAGS = "--production=false"
