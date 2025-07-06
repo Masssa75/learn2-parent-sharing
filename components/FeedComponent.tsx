@@ -587,23 +587,23 @@ export default function FeedComponent({ showAuthPrompt = true, protectedRoute = 
       })
 
   return (
-    <div className="min-h-screen bg-dark-bg">
+    <div className="min-h-screen bg-background">
       {/* Header */}
-      <div className="sticky top-0 bg-dark-bg z-10">
+      <div className="sticky top-0 bg-background z-10">
         <div className="max-w-2xl mx-auto px-5 pt-6 pb-4">
           <div className="flex items-center justify-between mb-2">
-            <h1 className="text-display text-text-primary">Discover</h1>
+            <h1 className="text-display text-white">Discover</h1>
             {!isAuthenticated ? (
               <div className="flex items-center gap-3">
                 <button
                   onClick={() => router.push('/login')}
-                  className="bg-brand-yellow/20 border border-brand-yellow text-brand-yellow rounded-button px-4 py-2 text-sm font-semibold uppercase tracking-wider hover:bg-brand-yellow/30 transition-all cursor-pointer"
+                  className="bg-primary/20 border border-primary text-primary rounded-button px-4 py-2 text-sm font-semibold uppercase tracking-wider hover:bg-primary/30 transition-all cursor-pointer"
                 >
                   CLAIM +100
                 </button>
                 <Link 
                   href="/login"
-                  className="px-6 py-3 bg-brand-yellow text-black rounded-button font-semibold hover:scale-105 btn-transition"
+                  className="px-6 py-3 bg-primary text-black rounded-button font-semibold hover:scale-105 btn-transition"
                 >
                   SIGN IN
                 </Link>
@@ -612,7 +612,7 @@ export default function FeedComponent({ showAuthPrompt = true, protectedRoute = 
               <div className="relative">
                 <button 
                   onClick={() => setShowProfileMenu(!showProfileMenu)}
-                  className="w-12 h-12 bg-brand-yellow rounded-avatar flex items-center justify-center overflow-hidden relative group"
+                  className="w-12 h-12 bg-primary rounded-full flex items-center justify-center overflow-hidden relative group"
                   title={user?.displayName || 'Profile'}
                 >
                   {user?.photoUrl && (
@@ -641,24 +641,24 @@ export default function FeedComponent({ showAuthPrompt = true, protectedRoute = 
                 </button>
                 
                 {showProfileMenu && (
-                  <div className="absolute right-0 mt-2 w-48 bg-dark-surface rounded-card shadow-lg py-2 border border-dark-border">
+                  <div className="absolute right-0 mt-2 w-48 bg-surface rounded-card shadow-lg py-2 border border-border">
                     <Link
                       href="/profile"
-                      className="block w-full text-left px-4 py-2 text-text-primary hover:bg-white/5"
+                      className="block w-full text-left px-4 py-2 text-white hover:bg-white/5"
                     >
                       View Profile
                     </Link>
                     {user?.isAdmin && (
                       <Link
                         href="/admin"
-                        className="block w-full text-left px-4 py-2 text-text-primary hover:bg-white/5"
+                        className="block w-full text-left px-4 py-2 text-white hover:bg-white/5"
                       >
                         Admin Dashboard
                       </Link>
                     )}
                     <button
                       onClick={handleSignOut}
-                      className="w-full text-left px-4 py-2 text-text-primary hover:bg-white/5"
+                      className="w-full text-left px-4 py-2 text-white hover:bg-white/5"
                     >
                       Sign Out
                     </button>
@@ -667,7 +667,7 @@ export default function FeedComponent({ showAuthPrompt = true, protectedRoute = 
               </div>
             )}
           </div>
-          <p className="text-text-secondary text-body-lg mb-6">What's working for parents today</p>
+          <p className="text-white/70 text-lg mb-6">What's working for parents today</p>
           
           {/* Categories */}
           <div className="flex gap-3 overflow-x-auto scrollbar-hide pb-2">
@@ -675,10 +675,10 @@ export default function FeedComponent({ showAuthPrompt = true, protectedRoute = 
             <button
               key={category}
               onClick={() => setSelectedCategory(category)}
-              className={`px-6 py-3 rounded-button whitespace-nowrap transition-all font-semibold text-body ${
+              className={`px-6 py-3 rounded-button whitespace-nowrap transition-all font-semibold text-base ${
                 selectedCategory === category
-                  ? 'bg-brand-yellow text-black'
-                  : 'bg-transparent text-text-primary border border-dark-border hover:bg-white/5'
+                  ? 'bg-primary text-black'
+                  : 'bg-transparent text-white border border-border hover:bg-white/5'
               }`}
             >
               {category}
