@@ -611,8 +611,8 @@ export default function FeedComponent({ showAuthPrompt = true, protectedRoute = 
               <div className="flex items-center gap-3">
                 {/* Compact Points Display */}
                 <div className="text-right leading-tight">
-                  <div className="text-primary text-lg font-semibold">{user.points || 0}</div>
-                  <div className="text-text-muted text-xs">Level {user.level || 1}</div>
+                  <div className="text-primary text-lg font-semibold">{user?.points || 0}</div>
+                  <div className="text-text-muted text-xs">Level {user?.level || 1}</div>
                 </div>
                 
                 {/* Profile Button */}
