@@ -4,7 +4,6 @@ import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { YouTubePlayer } from './YouTubePlayer'
-import { PointsDisplay } from './PointsDisplay'
 
 interface User {
   id: string
@@ -609,12 +608,20 @@ export default function FeedComponent({ showAuthPrompt = true, protectedRoute = 
                 </Link>
               </div>
             ) : (
-              <div className="relative">
-                <button 
-                  onClick={() => setShowProfileMenu(!showProfileMenu)}
-                  className="w-12 h-12 bg-primary rounded-full flex items-center justify-center overflow-hidden relative group"
-                  title={user?.displayName || 'Profile'}
-                >
+              <div className="flex items-center gap-3">
+                {/* Compact Points Display */}
+                <div className="text-right leading-tight">
+                  <div className="text-primary text-lg font-semibold">{user.points || 0}</div>
+                  <div className="text-text-muted text-xs">Level {user.level || 1}</div>
+                </div>
+                
+                {/* Profile Button */}
+                <div className="relative">
+                  <button 
+                    onClick={() => setShowProfileMenu(!showProfileMenu)}
+                    className="w-12 h-12 bg-primary rounded-full flex items-center justify-center overflow-hidden relative group"
+                    title={user?.displayName || 'Profile'}
+                  >
                   {user?.photoUrl && (
                     <img 
                       src={user.photoUrl} 
@@ -664,6 +671,7 @@ export default function FeedComponent({ showAuthPrompt = true, protectedRoute = 
                     </button>
                   </div>
                 )}
+                </div>
               </div>
             )}
           </div>
@@ -687,18 +695,6 @@ export default function FeedComponent({ showAuthPrompt = true, protectedRoute = 
         </div>
         </div>
       </div>
-
-      {/* Points Display */}
-      {isAuthenticated && user && (
-        <div className="max-w-2xl mx-auto px-5">
-          <PointsDisplay 
-            points={user.points || 0}
-            xp={user.totalXp || 0}
-            level={user.level || 1}
-            actionsRemaining={user.actionsRemaining || 0}
-          />
-        </div>
-      )}
 
       {/* Posts */}
       <div className="max-w-2xl mx-auto px-5 pb-20 custom-scrollbar">
