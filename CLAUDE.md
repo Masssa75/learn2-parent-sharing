@@ -170,6 +170,39 @@ After exploring multiple design directions (Pinterest-style, playful variations)
 - Consider "Collections" or "Guides" as primary navigation
 - Maybe add quality indicators like "Parent-tested for 6+ months"
 
+### Evergreen Content Design Ideas (Jan 7, 2025 Session Continued)
+
+Created `design-evergreen-examples.html` with visual examples for emphasizing timeless content:
+
+**1. Time Indicators**
+- "Discovered by 1,234 parents" instead of "2 hours ago"
+- "Tested for 6 months" and "Works for ages 3-7" badges
+- "Still relevant after 2 years" indicators
+
+**2. Collection/Library Metaphor**
+- "Your Family Library" framing
+- Library card visual style with warm colors
+- "Save to Collection" instead of "Like"
+- "In X family libraries" for social proof
+- "Parenting Toolkit" metaphor for practical resources
+
+**3. Quality Signals**
+- "Parent-verified" badges with confirmation counts
+- "Time-tested" labels with gold/silver/bronze medal styling
+- Success metrics (94% success rate, time saved, 5-star ratings)
+
+**4. Different Sorting**
+- "Most Helpful" as default sort instead of "Latest"
+- Category collections: "Essentials", "Proven Solutions", "Community Favorites"
+- "Timeless Tips" section for evergreen content
+
+**5. Visual Cues**
+- Recipe card styling for step-by-step guides
+- Gold/silver/bronze frames for quality content tiers
+- Book spine design for library shelf aesthetic
+
+**Status:** Awaiting feedback on which elements to keep/remove before implementation
+
 ---
 
 ## Critical Context
