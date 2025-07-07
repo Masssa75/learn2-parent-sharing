@@ -16,12 +16,20 @@ If a file is taken, either:
 ```bash
 1. Make code changes
 2. git add -A && git commit -m "feat: description" && git push origin main
-3. sleep 120  # MUST wait 2 minutes for Netlify deployment
-4. ALWAYS check deployment status BEFORE testing:
-   curl -s -H "Authorization: Bearer ${NETLIFY_AUTH_TOKEN}" "https://api.netlify.com/api/v1/sites/learn2-parent-sharing.netlify.app/deploys?per_page=1" | jq '.[0].state'
-   # Must show "ready" - if "error" check build logs
-5. npx playwright test --headed  # Test on DEPLOYED site ONLY after deployment succeeds
-6. If broken, fix and repeat from step 1
+3. IMMEDIATELY (within 5 seconds) start streaming logs:
+   netlify logs:deploy
+   # Watch until you see "Build script success" or an error
+4. If build fails:
+   - Analyze the error from the logs
+   - Fix the issue immediately
+   - Repeat from step 1
+5. If build succeeds, verify deployment:
+   netlify api listSiteDeploys --data '{"site_id": "0d9c7411-304b-40d3-94bf-73d979c8bf33"}' | jq '.[0].state'
+   # Must show "ready"
+6. npx playwright test --headed  # Test on DEPLOYED site
+7. If tests fail:
+   - Debug what's wrong
+   - Fix and repeat from step 1
 ```
 
 **NEVER**:
@@ -236,6 +244,32 @@ npx tsc --noEmit
 
 ---
 
+## Common Deployment Issues & Fixes
+
+### Build Dependencies Issue
+If you see "Module not found" errors in Netlify but it works locally:
+- Check if TypeScript, postcss, tailwindcss are in `dependencies` not `devDependencies`
+- Netlify sets NODE_ENV=production which skips devDependencies
+- Fix in netlify.toml:
+  ```toml
+  [build.environment]
+    NPM_FLAGS = "--production=false"
+  ```
+
+### Real-time Build Monitoring
+```bash
+# Get deployment details
+netlify api listSiteDeploys --data '{"site_id": "0d9c7411-304b-40d3-94bf-73d979c8bf33"}' | jq '.[0:3]'
+
+# Get specific deployment error
+netlify api getSiteDeploy --data '{"site_id": "0d9c7411-304b-40d3-94bf-73d979c8bf33", "deploy_id": "DEPLOY_ID"}' | jq '.error_message'
+```
+
+### CSS/Styling Not Showing
+- Ensure Tailwind classes are defined in tailwind.config.js
+- Use existing color classes (bg-primary, text-primary) instead of undefined ones
+- Check the generated CSS file exists in .next/static/css/
+
 ## Session Handoff Notes
 
 ### Migration Progress - Session June 30, 2024:
@@ -288,3 +322,33 @@ npx tsc --noEmit
 
 ### Important: 
 The migration architecture is complete and clean. Only the database connection needs to be resolved to have a fully functional app. All core components have been successfully migrated and improved.
+
+### Session July 7, 2025 - UI Fixes & Deployment Automation:
+
+**✅ COMPLETED:**
+1. **Fixed invisible authentication UI** - Profile button and SIGN IN button were black-on-black
+   - Added missing Tailwind color classes to config
+   - Changed to use existing color classes (bg-primary instead of bg-brand-yellow)
+   - Both buttons now properly visible with yellow styling
+
+2. **Replaced large PointsDisplay with compact design**
+   - Implemented minimal stack design (points number + level text)
+   - Positioned next to profile button in header
+   - Removed bulky card component for cleaner UI
+
+3. **Fixed Netlify deployment issues**
+   - Moved build dependencies (TypeScript, Tailwind) from devDependencies to dependencies
+   - Added NPM_FLAGS = "--production=false" to netlify.toml
+   - Deployments now succeed consistently
+
+4. **Established real-time deployment monitoring**
+   - Replaced "wait 2 minutes" with immediate `netlify logs:deploy`
+   - Can now see build errors in real-time and fix immediately
+   - Full autonomous workflow: push → monitor → fix → test → iterate
+
+**🔑 KEY LEARNINGS:**
+- Always use `netlify logs:deploy` immediately after git push (within 5 seconds)
+- Netlify sets NODE_ENV=production which skips devDependencies
+- Use existing Tailwind classes to avoid CSS generation issues
+- Test on deployed site, not just locally
+- Fix build errors immediately when they appear in logs
