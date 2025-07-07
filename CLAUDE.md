@@ -127,6 +127,43 @@ This is a fresh project created from the template. The next step is to migrate f
 
 ---
 
+## Design Direction (Jan 7, 2025 Session)
+
+### Final Design Choice: Medium-Style with Purple Accents
+After exploring multiple design directions (Pinterest-style, playful variations), we settled on a Medium-style design that feels professional yet approachable for parents.
+
+**Key Design Files:**
+- `design-medium-expanded.html` - The base design with rich content examples
+- `design-medium-subtle.html` - The refined version with purple touches
+
+**Design Principles:**
+1. **Clean, content-focused layout** - Similar to Medium's article feed
+2. **Subtle purple accents** - Purple "Write" button, active tab underline, Editor's Pick badges
+3. **Rich content types** - Articles with embedded YouTube videos, app recommendations, website resources
+4. **Professional typography** - Merriweather for headlines, Inter for body text
+5. **Minimal but warm** - White background, subtle shadows, rounded corners on cards
+
+**Key Visual Elements:**
+- App cards with gradient letter icons (no external images)
+- Star ratings in amber color
+- Green links that feel friendly
+- Pink heart hovers for warmth
+- Indigo/purple for primary actions
+
+**Content Philosophy:**
+- **Evergreen over ephemeral** - Focus on timeless parenting resources
+- **Quality over quantity** - Curated, tested recommendations
+- **Real experiences** - Parent-written reviews and guides
+- **Mixed media** - Apps, YouTube videos, websites, printables all in one feed
+
+**Next Design Considerations:**
+- How to emphasize evergreen content vs. time-based social feeds
+- Possibly add "Last updated" instead of "2 hours ago"
+- Consider "Collections" or "Guides" as primary navigation
+- Maybe add quality indicators like "Parent-tested for 6+ months"
+
+---
+
 ## Critical Context
 
 ### Database Gotchas (from Learn project)

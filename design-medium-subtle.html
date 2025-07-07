@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn2 - Medium-Style Subtle</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        .design-container {
+            max-width: 400px;
+            height: 800px;
+            overflow-y: auto;
+            border-radius: 40px;
+            box-shadow: 0 0 40px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        /* Clean scrollbar */
+        .design-container::-webkit-scrollbar {
+            width: 6px;
+        }
+        .design-container::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .design-container::-webkit-scrollbar-thumb {
+            background: #e0e0e0;
+            border-radius: 3px;
+        }
+        
+        /* Typography */
+        .serif { font-family: 'Merriweather', serif; }
+        .sans { font-family: 'Inter', sans-serif; }
+        
+        /* Link styles */
+        .content-link {
+            color: #059669;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+        .content-link:hover {
+            color: #047857;
+        }
+        
+        /* Embedded content styles */
+        .embed-container {
+            background: #fafafa;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+            margin: 16px 0;
+        }
+        
+        .youtube-embed {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+            overflow: hidden;
+        }
+        
+        .youtube-embed iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        
+        /* App card styles */
+        .app-card {
+            background: #f8f8f8;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 16px;
+            margin: 16px 0;
+            transition: all 0.2s ease;
+        }
+        
+        .app-card:hover {
+            border-color: #059669;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        
+        /* Quote styles */
+        .quote {
+            border-left: 3px solid #292929;
+            padding-left: 20px;
+            margin: 20px 0;
+            font-style: italic;
+            color: #555;
+        }
+        
+        /* Tag styles */
+        .tag {
+            background: #f0f0f0;
+            padding: 4px 12px;
+            border-radius: 16px;
+            font-size: 13px;
+            color: #555;
+            display: inline-block;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+        
+        /* Response/comment styles */
+        .response {
+            background: #fafafa;
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 12px;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 p-8">
+    <h1 class="text-4xl font-bold text-center mb-4">Learn2 - Medium-Style with Purple</h1>
+    <p class="text-center text-gray-600 mb-12">Subtle purple accents for a lighter, friendlier feel</p>
+
+    <div class="max-w-2xl mx-auto">
+        <div class="design-container mx-auto bg-white">
+            <!-- Header -->
+            <div class="px-6 py-5 border-b border-gray-200 sticky top-0 bg-white z-10">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-2xl font-serif font-bold text-gray-900">Learn2</h3>
+                    <div class="flex items-center gap-3">
+                        <button class="text-gray-600 hover:text-gray-900 transition-colors">
+                            <i class="fas fa-search"></i>
+                        </button>
+                        <button class="text-gray-600 hover:text-gray-900 transition-colors">
+                            <i class="far fa-bell"></i>
+                        </button>
+                        <button class="bg-indigo-600 text-white px-4 py-1.5 rounded-full text-sm font-medium hover:bg-indigo-700 transition-colors">
+                            Write
+                        </button>
+                    </div>
+                </div>
+                <div class="flex gap-4 text-sm text-gray-600 overflow-x-auto">
+                    <button class="whitespace-nowrap hover:text-gray-900 transition-colors pb-2 border-b-2 border-indigo-600 text-gray-900 font-medium">For You</button>
+                    <button class="whitespace-nowrap hover:text-gray-900 transition-colors pb-2">Apps & Tech</button>
+                    <button class="whitespace-nowrap hover:text-gray-900 transition-colors pb-2">Books & Learning</button>
+                    <button class="whitespace-nowrap hover:text-gray-900 transition-colors pb-2">Activities</button>
+                    <button class="whitespace-nowrap hover:text-gray-900 transition-colors pb-2">Parenting Tips</button>
+                </div>
+            </div>
+
+            <!-- Article Feed -->
+            <div class="px-6 py-6 space-y-8">
+                
+                <!-- Featured Article with YouTube Video -->
+                <article class="pb-8 border-b border-gray-200">
+                    <div class="flex items-center gap-2 mb-3">
+                        <img src="https://i.pravatar.cc/24?img=20" class="w-6 h-6 rounded-full" alt="User">
+                        <span class="text-sm text-gray-700">Jessica Wang</span>
+                        <span class="text-gray-400">·</span>
+                        <span class="text-sm text-gray-500">2 hours ago</span>
+                        <span class="bg-purple-50 text-purple-700 text-xs px-2 py-1 rounded-full ml-2 font-medium">Editor's Pick</span>
+                    </div>
+                    <h2 class="text-2xl serif font-bold text-gray-900 mb-3 hover:text-gray-700 transition-colors cursor-pointer">
+                        The Complete Guide to Educational Screen Time: What Actually Works
+                    </h2>
+                    <p class="text-gray-600 mb-4 leading-relaxed">
+                        After interviewing 50+ child development experts and testing over 200 apps with my three kids (ages 3, 5, and 7), I've finally cracked the code on educational screen time. Here's what nobody tells you about making technology work FOR your family, not against it.
+                    </p>
+                    
+                    <!-- YouTube Embed -->
+                    <div class="embed-container mb-4">
+                        <div class="youtube-embed">
+                            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    
+                    <p class="text-gray-600 mb-4">
+                        The video above shows our morning routine using the <a href="#" class="content-link">Khan Academy Kids app</a>. Notice how my 5-year-old is completely engaged without any nagging or timer-watching.
+                    </p>
+                    
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-4 text-sm text-gray-500">
+                            <span>12 min read</span>
+                            <span>·</span>
+                            <button class="hover:text-indigo-600 transition-colors">
+                                <i class="far fa-bookmark"></i>
+                            </button>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <button class="text-gray-500 hover:text-pink-500 transition-colors flex items-center gap-1">
+                                <i class="far fa-heart"></i>
+                                <span class="text-sm">1.2K</span>
+                            </button>
+                            <button class="text-gray-500 hover:text-gray-700 transition-colors flex items-center gap-1">
+                                <i class="far fa-comment"></i>
+                                <span class="text-sm">89</span>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article with App Recommendations -->
+                <article class="pb-8 border-b border-gray-200">
+                    <div class="flex items-center gap-2 mb-3">
+                        <img src="https://i.pravatar.cc/24?img=25" class="w-6 h-6 rounded-full" alt="User">
+                        <span class="text-sm text-gray-700">Marcus Thompson</span>
+                        <span class="text-gray-400">·</span>
+                        <span class="text-sm text-gray-500">Yesterday</span>
+                    </div>
+                    <h2 class="text-xl serif font-bold text-gray-900 mb-3 hover:text-gray-700 transition-colors cursor-pointer">
+                        5 Math Apps That Made My Math-Phobic Kid Love Numbers
+                    </h2>
+                    <p class="text-gray-600 mb-4">
+                        My daughter used to cry at the sight of math homework. Now she begs for "math time" on the iPad. Here are the apps that changed everything:
+                    </p>
+                    
+                    <!-- App Card 1 -->
+                    <div class="app-card">
+                        <div class="flex items-start gap-3">
+                            <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white font-bold text-2xl shadow-md">P</div>
+                            <div class="flex-1">
+                                <h4 class="font-semibold text-gray-900">Prodigy Math Game</h4>
+                                <p class="text-sm text-gray-600 mt-1">RPG-style math practice that adapts to your child's level</p>
+                                <div class="flex items-center gap-3 mt-2">
+                                    <span class="text-amber-500 text-sm">★★★★★ 4.8</span>
+                                    <a href="https://apps.apple.com/app/prodigy-math-game/id950795722" class="text-blue-600 text-sm hover:underline">App Store</a>
+                                    <a href="https://play.google.com/store/apps/details?id=com.prodigygame.prodigy" class="text-green-600 text-sm hover:underline">Google Play</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- App Card 2 -->
+                    <div class="app-card">
+                        <div class="flex items-start gap-3">
+                            <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center text-white font-bold text-2xl shadow-md">K</div>
+                            <div class="flex-1">
+                                <h4 class="font-semibold text-gray-900">Khan Academy Kids</h4>
+                                <p class="text-sm text-gray-600 mt-1">Free, comprehensive, and absolutely no ads</p>
+                                <div class="flex items-center gap-3 mt-2">
+                                    <span class="text-amber-500 text-sm">★★★★★ 4.9</span>
+                                    <a href="https://apps.apple.com/app/khan-academy-kids/id1378467217" class="text-blue-600 text-sm hover:underline">App Store</a>
+                                    <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded-full">FREE</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <p class="text-gray-600 mt-4">
+                        The key? Start with just 10 minutes a day. <a href="#" class="content-link">Read the full review with video demos →</a>
+                    </p>
+                    
+                    <div class="flex items-center justify-between mt-4">
+                        <div class="flex gap-2">
+                            <span class="tag">Apps</span>
+                            <span class="tag">Math</span>
+                            <span class="tag">Elementary</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <button class="text-gray-500 hover:text-pink-500 transition-colors flex items-center gap-1">
+                                <i class="far fa-heart"></i>
+                                <span class="text-sm">542</span>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article with Website Resource -->
+                <article class="pb-8 border-b border-gray-200">
+                    <div class="flex items-center gap-2 mb-3">
+                        <img src="https://i.pravatar.cc/24?img=30" class="w-6 h-6 rounded-full" alt="User">
+                        <span class="text-sm text-gray-700">Rachel Green</span>
+                        <span class="text-gray-400">·</span>
+                        <span class="text-sm text-gray-500">Mar 18</span>
+                    </div>
+                    <h2 class="text-xl serif font-bold text-gray-900 mb-3 hover:text-gray-700 transition-colors cursor-pointer">
+                        Free Printables That Saved My Rainy Weekend
+                    </h2>
+                    <p class="text-gray-600 mb-4">
+                        Forget expensive activity books. These websites have thousands of free printables that'll keep kids busy for hours:
+                    </p>
+                    
+                    <div class="quote">
+                        "The best part? Most of these sites let you customize difficulty levels and even add your child's name to the worksheets."
+                    </div>
+                    
+                    <ul class="space-y-3 my-4">
+                        <li class="flex items-start gap-2">
+                            <i class="fas fa-check-circle text-emerald-600 mt-0.5"></i>
+                            <div>
+                                <a href="https://www.education.com/worksheets/" class="content-link font-medium">Education.com</a>
+                                <p class="text-sm text-gray-600 mt-1">20,000+ worksheets, but watch for the premium upsell</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fas fa-check-circle text-emerald-600 mt-0.5"></i>
+                            <div>
+                                <a href="https://www.twinkl.com/" class="content-link font-medium">Twinkl Resources</a>
+                                <p class="text-sm text-gray-600 mt-1">Teacher-quality materials, some free with sign-up</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fas fa-check-circle text-emerald-600 mt-0.5"></i>
+                            <div>
+                                <a href="https://www.teacherspayteachers.com/Browse/Price-Range/Free" class="content-link font-medium">Teachers Pay Teachers (Free Section)</a>
+                                <p class="text-sm text-gray-600 mt-1">Hidden gem: filter by "free" for thousands of activities</p>
+                            </div>
+                        </li>
+                    </ul>
+                    
+                    <div class="flex items-center justify-between mt-4">
+                        <div class="flex gap-2">
+                            <span class="tag">Activities</span>
+                            <span class="tag">Free Resources</span>
+                            <span class="tag">Printables</span>
+                        </div>
+                        <button class="text-gray-500 hover:text-indigo-600 transition-colors">
+                            <i class="far fa-bookmark"></i>
+                        </button>
+                    </div>
+                </article>
+
+                <!-- Quick Tips Article -->
+                <article class="pb-8 border-b border-gray-200">
+                    <div class="flex items-center gap-2 mb-3">
+                        <img src="https://i.pravatar.cc/24?img=35" class="w-6 h-6 rounded-full" alt="User">
+                        <span class="text-sm text-gray-700">Dr. Sarah Mitchell</span>
+                        <span class="text-blue-500 text-sm">
+                            <i class="fas fa-check-circle"></i>
+                        </span>
+                        <span class="text-gray-400">·</span>
+                        <span class="text-sm text-gray-500">Mar 17</span>
+                    </div>
+                    <h2 class="text-xl serif font-bold text-gray-900 mb-3 hover:text-gray-700 transition-colors cursor-pointer">
+                        The 2-Minute Rule That Transformed Bedtime
+                    </h2>
+                    <p class="text-gray-600 mb-4">
+                        One simple change eliminated 90% of our bedtime battles. Here's the sleep hack every parent needs:
+                    </p>
+                    
+                    <!-- Embedded YouTube -->
+                    <div class="embed-container mb-4">
+                        <div class="youtube-embed">
+                            <iframe src="https://www.youtube.com/embed/5MuIMqhT8DM" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    
+                    <p class="text-gray-600 mb-4">
+                        The <a href="#" class="content-link">Moshi Sleep app</a> plays a crucial role, but the real magic is in the timing...
+                    </p>
+                    
+                    <!-- Response/Comment -->
+                    <div class="response">
+                        <div class="flex items-center gap-2 mb-2">
+                            <img src="https://i.pravatar.cc/20?img=40" class="w-5 h-5 rounded-full" alt="User">
+                            <span class="text-sm font-medium text-gray-700">Amy Chen</span>
+                            <span class="text-xs text-gray-500">· Pediatric Sleep Consultant</span>
+                        </div>
+                        <p class="text-sm text-gray-600">
+                            This is spot on! I recommend this approach to all my clients. The key is consistency - stick with it for at least 2 weeks before giving up.
+                        </p>
+                    </div>
+                    
+                    <div class="flex items-center justify-between mt-4">
+                        <div class="flex items-center gap-3">
+                            <button class="text-gray-500 hover:text-pink-500 transition-colors flex items-center gap-1">
+                                <i class="far fa-heart"></i>
+                                <span class="text-sm">2.3K</span>
+                            </button>
+                            <button class="text-gray-500 hover:text-gray-700 transition-colors flex items-center gap-1">
+                                <i class="far fa-comment"></i>
+                                <span class="text-sm">156</span>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Book Recommendation Article -->
+                <article class="pb-8 border-b border-gray-200">
+                    <div class="flex items-center gap-2 mb-3">
+                        <img src="https://i.pravatar.cc/24?img=45" class="w-6 h-6 rounded-full" alt="User">
+                        <span class="text-sm text-gray-700">Michael Park</span>
+                        <span class="text-gray-400">·</span>
+                        <span class="text-sm text-gray-500">Mar 16</span>
+                    </div>
+                    <h2 class="text-xl serif font-bold text-gray-900 mb-3 hover:text-gray-700 transition-colors cursor-pointer">
+                        Books My Reluctant Reader Finally Loved (Plus the App That Helped)
+                    </h2>
+                    <p class="text-gray-600 mb-4">
+                        After years of "I hate reading," my 8-year-old is now sneaking books under the covers with a flashlight. Here's what changed:
+                    </p>
+                    
+                    <div class="app-card">
+                        <div class="flex items-start gap-3">
+                            <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center text-white font-bold text-2xl shadow-md">E</div>
+                            <div class="flex-1">
+                                <h4 class="font-semibold text-gray-900">Epic! - Kids' Books and Videos</h4>
+                                <p class="text-sm text-gray-600 mt-1">Netflix for kids' books with 40,000+ titles</p>
+                                <div class="flex items-center gap-3 mt-2">
+                                    <span class="text-amber-500 text-sm">★★★★☆ 4.6</span>
+                                    <a href="https://apps.apple.com/app/epic-kids-books-videos/id719219382" class="text-blue-600 text-sm hover:underline">Try Free</a>
+                                    <span class="text-gray-500 text-sm">$9.99/month after trial</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <p class="text-gray-600 mt-4">
+                        The game-changer was letting HIM choose. Start with graphic novels - <a href="https://www.amazon.com/Dog-Man-Creator-Captain-Underpants/dp/0545581605" class="content-link">Dog Man</a> and <a href="https://www.amazon.com/Bad-Guys-Episode-Aaron-Blabey/dp/0545912407" class="content-link">The Bad Guys</a> are gateway drugs to chapter books.
+                    </p>
+                    
+                    <div class="flex gap-2 mt-4">
+                        <span class="tag">Reading</span>
+                        <span class="tag">Books</span>
+                        <span class="tag">Elementary</span>
+                    </div>
+                </article>
+
+                <!-- Activity/DIY Article -->
+                <article class="pb-8 border-b border-gray-200">
+                    <div class="flex items-center gap-2 mb-3">
+                        <img src="https://i.pravatar.cc/24?img=50" class="w-6 h-6 rounded-full" alt="User">
+                        <span class="text-sm text-gray-700">Lisa Rodriguez</span>
+                        <span class="text-gray-400">·</span>
+                        <span class="text-sm text-gray-500">Mar 15</span>
+                    </div>
+                    <h2 class="text-xl serif font-bold text-gray-900 mb-3 hover:text-gray-700 transition-colors cursor-pointer">
+                        The $10 Busy Box That Buys You 30 Minutes of Peace
+                    </h2>
+                    <p class="text-gray-600 mb-4">
+                        Inspired by this <a href="https://busytoddler.com/quick-easy-activities/" class="content-link">Busy Toddler post</a>, I created the ultimate emergency activity kit. Here's exactly what's inside:
+                    </p>
+                    
+                    <!-- Embedded image/graphic -->
+                    <div class="embed-container p-4 bg-gray-50">
+                        <div class="grid grid-cols-3 gap-3">
+                            <div class="bg-white rounded-lg p-3 shadow-sm text-center">
+                                <div class="text-3xl mb-1">🧵</div>
+                                <p class="text-xs text-gray-600">Pipe Cleaners</p>
+                            </div>
+                            <div class="bg-white rounded-lg p-3 shadow-sm text-center">
+                                <div class="text-3xl mb-1">🎨</div>
+                                <p class="text-xs text-gray-600">Painters Tape</p>
+                            </div>
+                            <div class="bg-white rounded-lg p-3 shadow-sm text-center">
+                                <div class="text-3xl mb-1">📄</div>
+                                <p class="text-xs text-gray-600">Contact Paper</p>
+                            </div>
+                            <div class="bg-white rounded-lg p-3 shadow-sm text-center">
+                                <div class="text-3xl mb-1">🍝</div>
+                                <p class="text-xs text-gray-600">Colander</p>
+                            </div>
+                            <div class="bg-white rounded-lg p-3 shadow-sm text-center">
+                                <div class="text-3xl mb-1">🖌️</div>
+                                <p class="text-xs text-gray-600">Paintbrush</p>
+                            </div>
+                            <div class="bg-white rounded-lg p-3 shadow-sm text-center">
+                                <div class="text-3xl mb-1">💧</div>
+                                <p class="text-xs text-gray-600">Water</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <ul class="space-y-2 my-4 text-gray-600">
+                        <li>• Pipe cleaners + colander = 15 minutes of threading fun</li>
+                        <li>• Painters tape + hallway = instant road for toy cars</li>
+                        <li>• Contact paper + tissue paper = mess-free "stained glass"</li>
+                        <li>• Water + paintbrush + sidewalk = zero-cleanup painting</li>
+                    </ul>
+                    
+                    <p class="text-gray-600">
+                        Pro tip: Rotate items weekly. What they haven't seen in 2 weeks is "new" again. Get the <a href="#" class="content-link">full shopping list and instructions here</a>.
+                    </p>
+                    
+                    <div class="flex items-center justify-between mt-4">
+                        <div class="flex gap-2">
+                            <span class="tag">Activities</span>
+                            <span class="tag">Toddlers</span>
+                            <span class="tag">DIY</span>
+                        </div>
+                        <button class="text-gray-500 hover:text-pink-500 transition-colors flex items-center gap-1">
+                            <i class="far fa-heart"></i>
+                            <span class="text-sm">892</span>
+                        </button>
+                    </div>
+                </article>
+
+                <!-- Social/Community Article -->
+                <article class="pb-8 border-b border-gray-200">
+                    <div class="flex items-center gap-2 mb-3">
+                        <img src="https://i.pravatar.cc/24?img=55" class="w-6 h-6 rounded-full" alt="User">
+                        <span class="text-sm text-gray-700">David Kim</span>
+                        <span class="text-gray-400">·</span>
+                        <span class="text-sm text-gray-500">Mar 14</span>
+                    </div>
+                    <h2 class="text-xl serif font-bold text-gray-900 mb-3 hover:text-gray-700 transition-colors cursor-pointer">
+                        How We Built a Neighborhood Toy Library (And You Can Too)
+                    </h2>
+                    <p class="text-gray-600 mb-4">
+                        Started with 5 families. Now we have 50+ members sharing $10,000 worth of toys. Here's our blueprint:
+                    </p>
+                    
+                    <div class="bg-blue-50 border-l-4 border-blue-500 p-4 my-4">
+                        <p class="text-sm text-blue-900">
+                            <strong>Quick Start:</strong> Join our <a href="#" class="text-blue-700 underline">Facebook group template</a> and download the <a href="#" class="text-blue-700 underline">Toy Library Starter Kit</a> (includes inventory sheets, rules, and liability waivers).
+                        </p>
+                    </div>
+                    
+                    <p class="text-gray-600">
+                        We use the <a href="https://www.myturn.com/" class="content-link">MyTurn app</a> for lending management. It's like Netflix for toys - members can reserve online and pick up during weekly "library hours."
+                    </p>
+                    
+                    <div class="flex items-center justify-between mt-4">
+                        <div class="flex gap-2">
+                            <span class="tag">Community</span>
+                            <span class="tag">Sharing Economy</span>
+                            <span class="tag">Toys</span>
+                        </div>
+                        <button class="text-gray-500 hover:text-gray-700 transition-colors">
+                            <i class="fas fa-share"></i>
+                        </button>
+                    </div>
+                </article>
+
+                <!-- Tech/Screen Time Article -->
+                <article class="pb-8">
+                    <div class="flex items-center gap-2 mb-3">
+                        <img src="https://i.pravatar.cc/24?img=60" class="w-6 h-6 rounded-full" alt="User">
+                        <span class="text-sm text-gray-700">Tech Mom Amanda</span>
+                        <span class="text-orange-500 text-sm">
+                            <i class="fas fa-fire"></i>
+                        </span>
+                        <span class="text-gray-400">·</span>
+                        <span class="text-sm text-gray-500">Mar 13</span>
+                    </div>
+                    <h2 class="text-xl serif font-bold text-gray-900 mb-3 hover:text-gray-700 transition-colors cursor-pointer">
+                        I Let AI Teach My Kid to Code (Here's What Happened)
+                    </h2>
+                    <p class="text-gray-600 mb-4">
+                        My 6-year-old just built her first game. Not with Scratch or Code.org, but with <a href="https://cursor.com" class="content-link">Cursor</a> and voice commands. The future is wild.
+                    </p>
+                    
+                    <!-- YouTube Tutorial -->
+                    <div class="embed-container mb-4">
+                        <div class="youtube-embed">
+                            <iframe src="https://www.youtube.com/embed/KlKJdR7u0aE" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    
+                    <p class="text-gray-600 mb-4">
+                        We started with <a href="https://www.tynker.com/" class="content-link">Tynker</a> for basics, then jumped straight to "real" coding with AI assistance. The key apps in our journey:
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="app-card p-3">
+                            <h5 class="font-semibold text-sm">ScratchJr</h5>
+                            <p class="text-xs text-gray-600 mt-1">Ages 5-7 starter</p>
+                            <a href="https://www.scratchjr.org/" class="text-xs text-blue-600">Free</a>
+                        </div>
+                        <div class="app-card p-3">
+                            <h5 class="font-semibold text-sm">Swift Playgrounds</h5>
+                            <p class="text-xs text-gray-600 mt-1">iPad coding fun</p>
+                            <a href="https://apps.apple.com/app/swift-playgrounds/id908519492" class="text-xs text-blue-600">iPad only</a>
+                        </div>
+                        <div class="app-card p-3">
+                            <h5 class="font-semibold text-sm">Cursor + Voice</h5>
+                            <p class="text-xs text-gray-600 mt-1">AI pair programming</p>
+                            <a href="https://cursor.com" class="text-xs text-blue-600">Free tier</a>
+                        </div>
+                        <div class="app-card p-3">
+                            <h5 class="font-semibold text-sm">Replit</h5>
+                            <p class="text-xs text-gray-600 mt-1">Code anywhere</p>
+                            <a href="https://replit.com" class="text-xs text-blue-600">Free start</a>
+                        </div>
+                    </div>
+                    
+                    <p class="text-gray-600 mt-4">
+                        The mindblowing part? She's learning problem-solving, not syntax. <a href="#" class="content-link">Full tutorial and parent guide here →</a>
+                    </p>
+                    
+                    <div class="flex items-center justify-between mt-4">
+                        <div class="flex gap-2">
+                            <span class="tag">Coding</span>
+                            <span class="tag">AI</span>
+                            <span class="tag">Future Skills</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <button class="text-gray-500 hover:text-pink-500 transition-colors flex items-center gap-1">
+                                <i class="far fa-heart"></i>
+                                <span class="text-sm">3.1K</span>
+                            </button>
+                            <button class="text-gray-500 hover:text-gray-700 transition-colors flex items-center gap-1">
+                                <i class="far fa-comment"></i>
+                                <span class="text-sm">234</span>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+
+            <!-- Fixed Bottom Action -->
+            <div class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-4">
+                <button class="w-full bg-indigo-600 text-white py-3 rounded-full font-medium hover:bg-indigo-700 transition-colors flex items-center justify-center gap-2">
+                    <i class="fas fa-pen"></i>
+                    Share Your Discovery
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-12 max-w-2xl mx-auto">
+        <h3 class="text-2xl font-bold mb-4">Very Subtle Changes:</h3>
+        <div class="bg-white p-6 rounded-xl shadow-lg">
+            <ul class="space-y-2">
+                <li class="flex items-start gap-2">
+                    <i class="fas fa-check-circle text-emerald-500 mt-1"></i>
+                    <span><strong>Purple "Write" button:</strong> Changed from gray to indigo-600 to match design</span>
+                </li>
+                <li class="flex items-start gap-2">
+                    <i class="fas fa-check-circle text-emerald-500 mt-1"></i>
+                    <span><strong>Purple accent color:</strong> Changed from black border to indigo for "For You" tab</span>
+                </li>
+                <li class="flex items-start gap-2">
+                    <i class="fas fa-check-circle text-emerald-500 mt-1"></i>
+                    <span><strong>Colored badges:</strong> Editor's Pick badge now has purple background</span>
+                </li>
+                <li class="flex items-start gap-2">
+                    <i class="fas fa-check-circle text-emerald-500 mt-1"></i>
+                    <span><strong>Heart hover color:</strong> Hearts turn pink on hover instead of gray</span>
+                </li>
+                <li class="flex items-start gap-2">
+                    <i class="fas fa-check-circle text-emerald-500 mt-1"></i>
+                    <span><strong>Bookmark hover:</strong> Bookmarks turn indigo on hover</span>
+                </li>
+                <li class="flex items-start gap-2">
+                    <i class="fas fa-check-circle text-emerald-500 mt-1"></i>
+                    <span><strong>Bottom button:</strong> Changed from gray to indigo to match top button</span>
+                </li>
+                <li class="flex items-start gap-2">
+                    <i class="fas fa-check-circle text-emerald-500 mt-1"></i>
+                    <span><strong>Check icons:</strong> Changed from green-600 to emerald-600 for consistency</span>
+                </li>
+                <li class="flex items-start gap-2">
+                    <i class="fas fa-check-circle text-emerald-500 mt-1"></i>
+                    <span><strong>Links:</strong> Changed from dark green (#1a8917) to brighter emerald (#059669)</span>
+                </li>
+                <li class="flex items-start gap-2">
+                    <i class="fas fa-check-circle text-emerald-500 mt-1"></i>
+                    <span><strong>Star ratings:</strong> Changed from yellow to warmer amber color</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+</html>
